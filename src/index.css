@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: "Quicksand";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.input {
+  font-family: "Quicksand";
+  font-size: 20px;
+  height: 30px;
+  margin-top: 20px;
+  min-width: 700px;
+}
+
+.button {
+  font-family: "Quicksand";
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: 0px;
+  height: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.todo-list__header {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.todo-list {
+  margin-left: 100px;
+}
