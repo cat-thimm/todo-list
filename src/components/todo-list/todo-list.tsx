@@ -20,7 +20,8 @@ const TodoList = () => {
     <div className="column todo-list">
       <div className="todo-list__header">Todo List</div>
       <Headline>
-        You have {store.unfinishedTodos} unfinished todos left.
+        You have {store.unfinishedTodos} unfinished todos left.{" "}
+        {store.unfinishedTodos === 0 && "Try adding some!"}
       </Headline>
       <div>
         {store.todos.map((todo) => {
