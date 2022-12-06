@@ -5,8 +5,21 @@ import store from "../../store/store";
 
 import { Input, ErrorText, SubmitButton } from "./add-todo.styles";
 
+/**
+ * This component allows you to add a new todo to the todo list in the mobx store.
+ * */
+
 const AddTodo = () => {
   const [error, setError] = useState("");
+
+  function addTodo(): void {
+    if (store.newTodo !== "") {
+      store.addTodo();
+      setError("");
+    } else {
+      setError("Please enter a new todo.");
+    }
+  }
 
   return (
     <div className="row">
@@ -17,21 +30,16 @@ const AddTodo = () => {
           placeholder="New Todo"
           value={store.newTodo}
           onChange={(e) => (store.newTodo = e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              addTodo();
+            }
+          }}
           error={error !== ""}
         />
         <ErrorText>{error}</ErrorText>
       </div>
-      <SubmitButton
-        className="button"
-        onClick={() => {
-          if (store.newTodo !== "") {
-            store.addTodo();
-            setError("");
-          } else {
-            setError("Bitte gib ein Todo ein.");
-          }
-        }}
-      >
+      <SubmitButton className="button" onClick={addTodo}>
         Add Todo
       </SubmitButton>
     </div>

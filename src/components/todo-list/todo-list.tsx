@@ -1,11 +1,21 @@
 import { observer } from "mobx-react";
+import { useState } from "react";
+
+import { addTodosToSessionStorage } from "../../store/store.helper";
+import store from "../../store/store";
 
 import AddTodo from "../add-todo/add-todo";
-import store from "../../store/store";
 
 import { Checkbox, Headline, Input } from "./todo-list.styles";
 
+/**
+ * This component is being used to display all todos as a list.
+ * It allows you to edit an entry in the list from the mobX store or delete a todo.
+ */
+
 const TodoList = () => {
+  const [editField, setEditField] = useState(false);
+
   return (
     <div className="column todo-list">
       <div className="todo-list__header">Todo List</div>
@@ -18,20 +28,32 @@ const TodoList = () => {
             <div key={todo.id} className="row">
               <Checkbox
                 type="checkbox"
-                checked={todo.done}
-                onClick={() => (todo.done = !todo.done)}
+                checked={todo.checked && !editField}
+                onChange={() => (todo.checked = !todo.checked)}
               />
               <Input
                 className="input"
                 type="text"
                 value={todo.text}
+                onFocus={() => {
+                  setEditField(true);
+                }}
+                onBlur={() => {
+                  setEditField(false);
+                  addTodosToSessionStorage(store.todos);
+                }}
                 onChange={(e) => (todo.text = e.target.value)}
               />
               <button
                 className="button"
-                onClick={() => store.removeTodo(todo.id)}
+                onClick={() => {
+                  if (todo.checked) {
+                    store.removeTodo(todo.id);
+                  }
+                }}
+                disabled={!todo.checked}
               >
-                Delete
+                Done
               </button>
             </div>
           );

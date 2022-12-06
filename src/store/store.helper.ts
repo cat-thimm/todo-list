@@ -8,7 +8,7 @@ export const addTodo = (todos: Todo[], text: string): Todo[] => [
   {
     id: Math.max(0, Math.max(...todos.map(({ id }) => id))) + 1,
     text,
-    done: false,
+    checked: false,
   },
 ];
 
