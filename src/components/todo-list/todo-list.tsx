@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { useState } from "react";
 
-import { addTodosToLocalStorage, removeTodo } from "../../store/store.helper";
+import { addTodosToLocalStorage } from "../../store/store.helper";
 import store from "../../store/store";
 
 import AddTodo from "../add-todo/add-todo";
