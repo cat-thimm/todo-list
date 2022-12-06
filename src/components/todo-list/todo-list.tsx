@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { useState } from "react";
 
-import { addTodosToSessionStorage } from "../../store/store.helper";
+import { addTodosToLocalStorage } from "../../store/store.helper";
 import store from "../../store/store";
 
 import AddTodo from "../add-todo/add-todo";
@@ -40,7 +40,7 @@ const TodoList = () => {
                 }}
                 onBlur={() => {
                   setEditField(false);
-                  addTodosToSessionStorage(store.todos);
+                  addTodosToLocalStorage(store.todos);
                 }}
                 onChange={(e) => (todo.text = e.target.value)}
               />

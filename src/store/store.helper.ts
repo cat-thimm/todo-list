@@ -12,8 +12,8 @@ export const addTodo = (todos: Todo[], text: string): Todo[] => [
   },
 ];
 
-export const getTodosFromSessionStorage = (): Todo[] => {
-  const todos = sessionStorage.getItem("todos");
+export const getTodosFromLocalStorage = (): Todo[] => {
+  const todos = localStorage.getItem("todos");
 
   if (!todos) {
     return [];
@@ -22,6 +22,6 @@ export const getTodosFromSessionStorage = (): Todo[] => {
   return JSON.parse(todos);
 };
 
-export const addTodosToSessionStorage = (todos: Todo[]): void => {
-  sessionStorage.setItem("todos", JSON.stringify(todos));
+export const addTodosToLocalStorage = (todos: Todo[]): void => {
+  localStorage.setItem("todos", JSON.stringify(todos));
 };

@@ -2,8 +2,8 @@ import { computed, makeObservable, observable } from "mobx";
 
 import {
   addTodo,
-  addTodosToSessionStorage,
-  getTodosFromSessionStorage,
+  addTodosToLocalStorage,
+  getTodosFromLocalStorage,
   removeTodo,
 } from "./store.helper";
 import { Todo } from "./store.types";
@@ -12,7 +12,7 @@ import { Todo } from "./store.types";
  * This class is used as a mobx store in order to enable state management in this app.
  */
 class Todos {
-  todos: Todo[] = getTodosFromSessionStorage();
+  todos: Todo[] = getTodosFromLocalStorage();
   finsihedTodos: Todo[] = [];
   newTodo: string = "";
 
@@ -32,15 +32,15 @@ class Todos {
   removeTodo(id: number) {
     this.todos = removeTodo(this.todos, id);
 
-    const todosInStorage = removeTodo(getTodosFromSessionStorage(), id);
-    addTodosToSessionStorage(todosInStorage);
+    const todosInStorage = removeTodo(getTodosFromLocalStorage(), id);
+    addTodosToLocalStorage(todosInStorage);
   }
 
   addTodo() {
     this.todos = addTodo(this.todos, this.newTodo);
     this.newTodo = "";
 
-    addTodosToSessionStorage(this.todos);
+    addTodosToLocalStorage(this.todos);
   }
 }
 
