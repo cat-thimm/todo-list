@@ -9,5 +9,3 @@ export const Checkbox = styled.input`
 export const Headline = styled.div`
   margin-top: 10px;
 `;
-
-export const Input = styled.input``;

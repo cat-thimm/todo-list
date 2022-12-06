@@ -6,7 +6,7 @@ import store from "../../store/store";
 
 import AddTodo from "../add-todo/add-todo";
 
-import { Checkbox, Headline, Input } from "./todo-list.styles";
+import { Checkbox, Headline } from "./todo-list.styles";
 
 /**
  * This component is being used to display all todos as a list.
@@ -32,7 +32,7 @@ const TodoList = () => {
                 checked={todo.checked && !editField}
                 onChange={() => (todo.checked = !todo.checked)}
               />
-              <Input
+              <input
                 className="input"
                 type="text"
                 value={todo.text}
